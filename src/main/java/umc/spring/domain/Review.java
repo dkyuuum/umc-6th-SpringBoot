@@ -21,6 +21,7 @@ public class Review {
 
     private Integer rate;
 
+    @Column(nullable = false, length = 30)
     private String title;
 
     @Column(nullable = false, length = 500)
