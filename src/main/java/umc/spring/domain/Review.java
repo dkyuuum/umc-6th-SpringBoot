@@ -2,9 +2,6 @@ package umc.spring.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.spring.domain.mapping.MemberMission;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
