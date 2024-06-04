@@ -20,21 +20,17 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
     private final ReviewRepository reviewRepository;
     private final StoreRepository storeRepository;
     private final MemberRepository memberRepository;
-    private final ReviewConverter reviewConverter;
 
     @Override
     @Transactional
-    public String postReview(ReviewRequestDTO.PostDto postDto, long storeId) {
-        Member member = memberRepository.getReferenceById(1L);
-        Optional<Store> storeOptional = storeRepository.findById(storeId);
+    public Review postReview(ReviewRequestDTO.PostDto postDto, Store store) {
+        Member member = memberRepository.getReferenceById(1);
+        Optional<Store> storeOptional = storeRepository.findById(store.getId());
 
-        if (storeOptional.isEmpty()) {
-            throw new IllegalArgumentException("Store not found with id: " + storeId);
-        }
-
-        Store store = storeOptional.get();
-        Review review = reviewConverter.convertToEntity(postDto, member, store);
+        Store s = storeOptional.get();
+        Review review = ReviewConverter.toReview(postDto, member, s);
         reviewRepository.save(review);
-        return review.getId().toString();
+
+        return reviewRepository.save(review);
     }
 }

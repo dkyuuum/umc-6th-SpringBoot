@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import com.example.umc.domain.common.BaseEntity;
 
-import java.util.List;
-import java.util.Optional;
-
 @Entity
 @Getter
 @Builder

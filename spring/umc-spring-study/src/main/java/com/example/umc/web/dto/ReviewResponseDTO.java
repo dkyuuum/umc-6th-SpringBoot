@@ -14,6 +14,10 @@ public class ReviewResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class PostResultDto{
+        int storeId;
+        String title;
+        String content;
+        double rate;
         LocalDateTime createdAt;
     }
 }

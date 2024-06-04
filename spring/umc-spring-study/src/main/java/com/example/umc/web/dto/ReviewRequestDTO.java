@@ -1,5 +1,10 @@
 package com.example.umc.web.dto;
 
+import com.example.umc.domain.Member;
+import com.example.umc.domain.Store;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
