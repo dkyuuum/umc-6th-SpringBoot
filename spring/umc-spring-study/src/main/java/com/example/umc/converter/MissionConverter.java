@@ -15,6 +15,7 @@ public class MissionConverter {
         responseDTO.setRewardPoints(mission.getReward());
 
         return responseDTO;
+
     }
 }
 

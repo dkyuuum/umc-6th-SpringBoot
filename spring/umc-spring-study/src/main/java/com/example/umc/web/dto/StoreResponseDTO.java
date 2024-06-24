@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-public class ReviewResponseDTO {
-
+public class StoreResponseDTO {
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class PostResultDto{
+    public static class CreateReviewResultDTO{
         int reviewId;
         String title;
         String content;
