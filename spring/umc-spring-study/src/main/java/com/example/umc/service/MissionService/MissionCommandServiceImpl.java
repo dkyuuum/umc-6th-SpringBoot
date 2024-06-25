@@ -5,6 +5,7 @@ import com.example.umc.domain.Store;
 import com.example.umc.repository.MissionRepository;
 import com.example.umc.repository.StoreRepository;
 import com.example.umc.web.dto.MissionRequestDTO;
+import com.example.umc.web.dto.MissionResponseDTO;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class MissionCommandServiceImpl implements MissionCommandService {
 
     @Override
     @Transactional
-    public Mission addMissionToStore(Long storeId, MissionRequestDTO.MissionPreViewDTO requestDTO) {
+    public Mission addMissionToStore(Long storeId, MissionResponseDTO.MissionPreViewDTO requestDTO) {
         Store store = storeRepository.findById(storeId)
                 .orElseThrow(() -> new EntityNotFoundException("Store not found with id: " + storeId));
 

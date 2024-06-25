@@ -1,21 +1,39 @@
 package com.example.umc.web.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class MissionResponseDTO {
 
     @Builder
     @Getter
-    @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class AddResultDto{
-        private Long id;
+    public static class MissionPreViewDTO{
+        @NotBlank
         private String title;
+
+        @NotBlank
         private String description;
+
+        @Positive
         private int rewardPoints;
-        LocalDateTime createdAt;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionPreViewListDTO{
+        List<MissionResponseDTO.MissionPreViewDTO> missionList;
+        Integer listSize;
+        Integer totalPage;
+        Long totalElements;
+        Boolean isFirst;
+        Boolean isLast;
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Console;
 import java.util.Optional;
 @Service
 @RequiredArgsConstructor
@@ -24,13 +25,7 @@ public class StoreQueryServiceImpl implements StoreQueryService{
     private final MissionRepository missionRepository;
 
     @Override
-    public Optional<Store> findStore(Long id) {
-        return storeRepository.findById(id);
-    }
-
-    @Override
     public Page<Review> getReviewList(Long storeId, Integer page) {
-
         Store store = storeRepository.findById(storeId).get();
 
         Page<Review> StorePage = reviewRepository.findAllByStore(store, PageRequest.of(page, 10));
@@ -41,7 +36,6 @@ public class StoreQueryServiceImpl implements StoreQueryService{
     public Page<Mission> getMissionList(Long storeId, Integer page) {
          Store store = storeRepository.findById(storeId).get();
 
-        Page<Mission> StorePage = missionRepository.findAllByStore(store, PageRequest.of(page, 10));
-        return StorePage;
+        return missionRepository.findAllByStore(store, PageRequest.of(page, 10));
     }
 }

@@ -36,12 +36,12 @@ public class StoreController {
 
     @Operation(summary = "특정 가게 미션 등록 API")
     @PostMapping("/{storeId}/missions/add")
-    public ResponseEntity<ApiResponse<MissionResponseDTO.AddResultDto>> addMissionToStore(
+    public ResponseEntity<ApiResponse<MissionRequestDTO.AddResultDto>> addMissionToStore(
             @PathVariable Long storeId,
-            @Valid @RequestBody MissionRequestDTO.MissionPreViewDTO requestDTO) {
+            @Valid @RequestBody MissionResponseDTO.MissionPreViewDTO requestDTO) {
 
         Mission mission = missionCommandService.addMissionToStore(storeId, requestDTO);
-        MissionResponseDTO.AddResultDto responseDTO = MissionConverter.toResponseDTO(mission);
+        MissionRequestDTO.AddResultDto responseDTO = MissionConverter.toResponseDTO(mission);
 
         return ResponseEntity.ok(ApiResponse.onSuccess(responseDTO));
     }
@@ -80,12 +80,12 @@ public class StoreController {
             @Parameter(name = "storeId", description = "가게의 아이디, path variable 입니다!"),
             @Parameter(name = "page", description = "페이지 번호, 0번이 1 페이지 입니다."),
     })
-    public ApiResponse<MissionRequestDTO.MissionPreViewListDTO> getMissionList(
+    public ApiResponse<MissionResponseDTO.MissionPreViewListDTO> getMissionList(
             @PathVariable(name = "storeId") Long storeId,
             @RequestParam(name = "page") Integer page
     ){
         Page<Mission> missionPage = storeQueryService.getMissionList(storeId, page);
-        MissionRequestDTO.MissionPreViewListDTO missionRequestDTO = StoreConverter.toMissionPreViewListDTO(missionPage);
+        MissionResponseDTO.MissionPreViewListDTO missionRequestDTO = StoreConverter.toMissionPreViewListDTO(missionPage);
 
         return ApiResponse.onSuccess(missionRequestDTO);
     }

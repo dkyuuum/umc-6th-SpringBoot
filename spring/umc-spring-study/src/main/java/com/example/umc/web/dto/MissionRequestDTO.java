@@ -6,34 +6,21 @@ import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MissionRequestDTO {
+
     @Builder
     @Getter
+    @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class MissionPreViewDTO{
-        @NotBlank
+    public static class AddResultDto{
+        private Long id;
         private String title;
-
-        @NotBlank
         private String description;
-
-        @Positive
         private int rewardPoints;
-    }
-
-    @Builder
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class MissionPreViewListDTO{
-        List<MissionRequestDTO.MissionPreViewDTO> missionList;
-        Integer listSize;
-        Integer totalPage;
-        Long totalElements;
-        Boolean isFirst;
-        Boolean isLast;
+        LocalDateTime createdAt;
     }
 }
