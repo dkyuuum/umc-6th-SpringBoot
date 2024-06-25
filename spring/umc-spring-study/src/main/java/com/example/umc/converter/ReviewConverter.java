@@ -17,16 +17,7 @@ import java.util.List;
 @Transactional
 public class ReviewConverter {
 
-      public static Review toReview(
-              ReviewRequestDTO.PostDto request
-      ){
-        return Review.builder()
-                .title(request.getTitle())
-                .rate(request.getRate())
-                .content(request.getContent())
-                .build();
-    }
-
+    // 리뷰 등록
     public static ReviewResponseDTO.PostResultDto toCreateReviewResultDTO(Review review) {
         return ReviewResponseDTO.PostResultDto.builder()
                 .reviewId(review.getId())

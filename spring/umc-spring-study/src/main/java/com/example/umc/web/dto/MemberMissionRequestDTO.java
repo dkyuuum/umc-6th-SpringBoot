@@ -5,18 +5,18 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class MemberMissionRequestDTO {
+    @NotNull
+    private Long memberId;
 
-    @Getter
-    @NoArgsConstructor
-    public static class MemberMissionRequestDto {
-        @NotNull
-        private int memberId;
+    @NotNull
+    private Long missionId;
 
-        @NotNull
-        private int missionId;
-
-        private MissionStatus missionStatus;
-    }
+    private MissionStatus missionStatus;
 }

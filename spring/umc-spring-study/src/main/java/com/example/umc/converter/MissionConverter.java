@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MissionConverter {
 
+    // 미션 등록
     public static MissionRequestDTO.AddResultDto toResponseDTO(Mission mission) {
         new MissionRequestDTO.AddResultDto();
         return MissionRequestDTO.AddResultDto.builder()
