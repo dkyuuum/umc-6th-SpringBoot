@@ -1,7 +1,9 @@
 package com.example.umc.service.StoreService;
 
+import com.example.umc.domain.Mission;
 import com.example.umc.domain.Review;
 import com.example.umc.domain.Store;
+import com.example.umc.repository.MissionRepository;
 import com.example.umc.repository.ReviewRepository;
 import com.example.umc.repository.StoreRepository;
 import com.example.umc.web.dto.StoreRequestDTO;
@@ -19,6 +21,7 @@ public class StoreQueryServiceImpl implements StoreQueryService{
 
     private final StoreRepository storeRepository;
     private final ReviewRepository reviewRepository;
+    private final MissionRepository missionRepository;
 
     @Override
     public Optional<Store> findStore(Long id) {
@@ -31,6 +34,14 @@ public class StoreQueryServiceImpl implements StoreQueryService{
         Store store = storeRepository.findById(storeId).get();
 
         Page<Review> StorePage = reviewRepository.findAllByStore(store, PageRequest.of(page, 10));
+        return StorePage;
+    }
+
+    @Override
+    public Page<Mission> getMissionList(Long storeId, Integer page) {
+         Store store = storeRepository.findById(storeId).get();
+
+        Page<Mission> StorePage = missionRepository.findAllByStore(store, PageRequest.of(page, 10));
         return StorePage;
     }
 }

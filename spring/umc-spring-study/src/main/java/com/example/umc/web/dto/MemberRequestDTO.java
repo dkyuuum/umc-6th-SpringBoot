@@ -8,31 +8,32 @@ import lombok.Setter;
 import com.example.umc.validation.annotation.ExistCategories;
 import java.util.List;
 
-@Getter
-@Setter
 public class MemberRequestDTO {
 
-    @NotBlank
-    private String name;
+    @Getter
+    public static class JoinDto {
+        @NotBlank
+        private String name;
 
-    @NotNull
-    private int gender;
+        @NotNull
+        private int gender;
 
-    @NotNull
-    private int birthYear;
+        @NotNull
+        private int birthYear;
 
-    @NotNull
-    private int birthMonth;
+        @NotNull
+        private int birthMonth;
 
-    @NotNull
-    private int birthDay;
+        @NotNull
+        private int birthDay;
 
-    @Size(min = 5, max = 12)
-    private String address;
+        @Size(min = 5, max = 12)
+        private String address;
 
-    @Size(min = 5, max = 12)
-    private String specAddress;
+        @Size(min = 5, max = 12)
+        private String specAddress;
 
-    @ExistCategories
-    private List<Long> preferCategory;
+        @ExistCategories
+        private List<Long> preferCategory;
+    }
 }

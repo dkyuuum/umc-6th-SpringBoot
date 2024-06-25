@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 public class MissionConverter {
 
     public static MissionResponseDTO.AddResultDto toResponseDTO(Mission mission) {
-        MissionResponseDTO.AddResultDto responseDTO = new MissionResponseDTO.AddResultDto();
-        responseDTO.setId(mission.getId());
-        responseDTO.setTitle(mission.getTitle());
-        responseDTO.setDescription(mission.getDescription());
-        responseDTO.setRewardPoints(mission.getReward());
-
-        return responseDTO;
-
+        new MissionResponseDTO.AddResultDto();
+        return MissionResponseDTO.AddResultDto.builder()
+                    .id(mission.getId())
+                    .title(mission.getTitle())
+                    .description(mission.getDescription())
+                    .rewardPoints(mission.getReward())
+                    .createdAt(mission.getCreatedAt())
+                    .build();
     }
 }
 

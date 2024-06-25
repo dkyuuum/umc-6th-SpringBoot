@@ -20,8 +20,6 @@ public class Review extends BaseEntity {
     private Long id;
 
     private String content;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
     private double rate;
     private String title;
 

@@ -17,7 +17,7 @@ public class MemberConverter {
                 .build();
     }
 
-    public static Member toMember(MemberRequestDTO request){
+    public static Member toMember(MemberRequestDTO.JoinDto request){
         Gender gender = null;
 
         switch (request.getGender()){

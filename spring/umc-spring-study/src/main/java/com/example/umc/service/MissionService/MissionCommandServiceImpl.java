@@ -17,9 +17,9 @@ public class MissionCommandServiceImpl implements MissionCommandService {
     private final MissionRepository missionRepository;
     private final StoreRepository storeRepository;
 
-     @Override
+    @Override
     @Transactional
-    public Mission addMissionToStore(Long storeId, MissionRequestDTO requestDTO) {
+    public Mission addMissionToStore(Long storeId, MissionRequestDTO.MissionPreViewDTO requestDTO) {
         Store store = storeRepository.findById(storeId)
                 .orElseThrow(() -> new EntityNotFoundException("Store not found with id: " + storeId));
 
