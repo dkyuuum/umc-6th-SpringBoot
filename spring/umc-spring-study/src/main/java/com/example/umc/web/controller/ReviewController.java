@@ -31,8 +31,8 @@ public class ReviewController {
     @PostMapping("/{storeId}/add")
     public ApiResponse<ReviewResponseDTO.PostResultDto> postReview(
             @RequestBody @Valid ReviewRequestDTO.PostDto request,
-            @PathVariable(name = "storeId") int storeId,
-            @RequestParam(name = "memberId") int memberId
+            @PathVariable(name = "storeId") Long storeId,
+            @RequestParam(name = "memberId") Long memberId
     ){
         Store store = storeRepository.findById(storeId)
                 .orElseThrow(() -> new RuntimeException("Store not found"));

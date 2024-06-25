@@ -22,7 +22,7 @@ public class MissionController {
     @Operation(summary = "특정 가게 미션 등록 API")
     @PostMapping("/{storeId}/missions/add")
     public ResponseEntity<ApiResponse<MissionResponseDTO.AddResultDto>> addMissionToStore(
-            @PathVariable int storeId,
+            @PathVariable Long storeId,
             @Valid @RequestBody MissionRequestDTO requestDTO) {
 
         Mission mission = missionCommandService.addMissionToStore(storeId, requestDTO);

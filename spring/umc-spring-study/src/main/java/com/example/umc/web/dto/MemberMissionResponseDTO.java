@@ -15,9 +15,9 @@ public class MemberMissionResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class MemberMissionResultDto {
-        private int id;
-        private int memberId;
-        private int missionId;
+        private Long id;
+        private Long memberId;
+        private Long missionId;
         private String status;
     }
 }

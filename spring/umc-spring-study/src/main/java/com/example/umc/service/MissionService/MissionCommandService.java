@@ -5,5 +5,5 @@ import com.example.umc.domain.Review;
 import com.example.umc.web.dto.MissionRequestDTO;
 
 public interface MissionCommandService {
-    Mission addMissionToStore(int storeId, MissionRequestDTO requestDTO);
+    Mission addMissionToStore(Long storeId, MissionRequestDTO requestDTO);
 }

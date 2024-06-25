@@ -14,7 +14,7 @@ public class ReviewResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class PostResultDto{
-        int reviewId;
+        Long reviewId;
         String title;
         String content;
         double rate;

@@ -21,7 +21,7 @@ public class MemberMissionController {
     @Operation(summary = "가게 미션 도전 API")
     @PostMapping("/{memberId}/missions/add")
     public ApiResponse<MemberMissionResponseDTO.MemberMissionResultDto> addMission(
-            @PathVariable int memberId
+            @PathVariable Long memberId
         ) {
         memberMissionService.getMissionChallenging(memberId);
         return ApiResponse.onSuccess(null);

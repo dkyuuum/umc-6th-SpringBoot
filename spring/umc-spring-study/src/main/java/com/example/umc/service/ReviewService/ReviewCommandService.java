@@ -8,7 +8,7 @@ import org.hibernate.query.Page;
 
 public interface ReviewCommandService {
     Review postReview(
-            int memberId,
+            Long memberId,
             Store store,
             ReviewRequestDTO.PostDto reviewRequestDTO
     );

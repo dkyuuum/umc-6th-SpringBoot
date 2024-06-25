@@ -5,5 +5,5 @@ import com.example.umc.domain.mapping.MemberMission;
 import com.example.umc.web.dto.MemberMissionRequestDTO;
 
 public interface MemberMissionCommandService {
-    public void getMissionChallenging(int memberId);
+    public void getMissionChallenging(Long memberId);
 }

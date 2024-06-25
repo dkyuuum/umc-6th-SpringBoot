@@ -12,7 +12,7 @@ public class MissionResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class AddResultDto{
-        private int id;
+        private Long id;
         private String title;
         private String description;
         private int rewardPoints;

@@ -21,12 +21,12 @@ public class StoreQueryServiceImpl implements StoreQueryService{
     private final ReviewRepository reviewRepository;
 
     @Override
-    public Optional<Store> findStore(int id) {
+    public Optional<Store> findStore(Long id) {
         return storeRepository.findById(id);
     }
 
     @Override
-    public Page<Review> getReviewList(int storeId, Integer page) {
+    public Page<Review> getReviewList(Long storeId, Integer page) {
 
         Store store = storeRepository.findById(storeId).get();
 

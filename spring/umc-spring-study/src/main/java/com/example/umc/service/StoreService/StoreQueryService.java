@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import java.util.Optional;
 
 public interface StoreQueryService {
-    Optional<Store> findStore(int id);
-    Page<Review> getReviewList(int storeId, Integer page);
+    Optional<Store> findStore(Long id);
+    Page<Review> getReviewList(Long storeId, Integer page);
 }
 

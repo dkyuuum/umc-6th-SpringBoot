@@ -1,12 +1,11 @@
 package com.example.umc.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import com.example.umc.domain.common.BaseEntity;
 import com.example.umc.domain.mapping.MemberPrefer;
+
+import java.util.List;
 
 
 @Entity
@@ -18,7 +17,11 @@ public class FoodCategory extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_id")
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "foodCategory", cascade = CascadeType.ALL)
+    private List<MemberPrefer> memberPrefers;
 }

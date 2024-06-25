@@ -22,7 +22,7 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
     private final MemberMissionRepository memberMissionRepository;
 
     @Transactional
-    public void getMissionChallenging(int memberId) {
+    public void getMissionChallenging(Long memberId) {
         MemberMission memberMission = memberMissionRepository.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid member mission ID"));
         memberMission.setStatus(MissionStatus.CHALLENGING);

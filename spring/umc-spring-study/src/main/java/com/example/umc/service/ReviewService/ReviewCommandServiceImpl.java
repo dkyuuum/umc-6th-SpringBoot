@@ -22,7 +22,7 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
      private final ReviewRepository reviewRepository;
     private final MemberRepository memberRepository;
 
-    public Review postReview(int memberId, Store store, ReviewRequestDTO.PostDto request) {
+    public Review postReview(Long memberId, Store store, ReviewRequestDTO.PostDto request) {
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new RuntimeException("Member not found"));
 

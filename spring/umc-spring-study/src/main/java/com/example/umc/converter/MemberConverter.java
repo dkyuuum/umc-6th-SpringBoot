@@ -17,8 +17,7 @@ public class MemberConverter {
                 .build();
     }
 
-    public static Member toMember(MemberRequestDTO.JoinDto request){
-
+    public static Member toMember(MemberRequestDTO request){
         Gender gender = null;
 
         switch (request.getGender()){
@@ -31,13 +30,15 @@ public class MemberConverter {
             case 3:
                 gender = Gender.NONE;
                 break;
+            default:
+                throw new IllegalArgumentException("Invalid gender value: " + request.getGender());
         }
 
         return Member.builder()
+                .name(request.getName())
                 .address(request.getAddress())
                 .specAddress(request.getSpecAddress())
                 .gender(gender)
-                .name(request.getName())
                 .memberPreferList(new ArrayList<>())
                 .build();
     }

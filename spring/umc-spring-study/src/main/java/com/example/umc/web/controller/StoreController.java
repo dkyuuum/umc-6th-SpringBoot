@@ -39,7 +39,7 @@ public class StoreController {
             @Parameter(name = "page", description = "페이지 번호, 0번이 1 페이지 입니다."),
     })
     public ApiResponse<ReviewListDTO.ReviewPreViewListDTO> getReviewList(
-            @PathVariable(name = "storeId") int storeId,
+            @PathVariable(name = "storeId") Long storeId,
             @RequestParam(name = "page") Integer page
     ){
         Page<Review> reviewPage = storeQueryService.getReviewList(storeId, page);
