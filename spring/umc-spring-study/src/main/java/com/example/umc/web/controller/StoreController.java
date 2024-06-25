@@ -2,15 +2,18 @@ package com.example.umc.web.controller;
 
 import com.example.umc.apiPayload.ApiResponse;
 import com.example.umc.converter.MissionConverter;
+import com.example.umc.converter.ReviewConverter;
 import com.example.umc.converter.StoreConverter;
 import com.example.umc.domain.Mission;
 import com.example.umc.domain.Review;
+import com.example.umc.domain.Store;
+import com.example.umc.repository.StoreRepository;
 import com.example.umc.service.MissionService.MissionCommandService;
+import com.example.umc.service.ReviewService.ReviewCommandService;
+import com.example.umc.service.ReviewService.ReviewQueryService;
 import com.example.umc.service.StoreService.StoreCommandService;
 import com.example.umc.service.StoreService.StoreQueryService;
-import com.example.umc.web.dto.MissionRequestDTO;
-import com.example.umc.web.dto.MissionResponseDTO;
-import com.example.umc.web.dto.ReviewListDTO;
+import com.example.umc.web.dto.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -30,9 +33,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/stores")
 public class StoreController {
 
-    private final StoreCommandService storeCommandService;
+    private final ReviewCommandService reviewCommandService;
+    private final StoreRepository storeRepository;
     private final StoreQueryService storeQueryService;
     private final MissionCommandService missionCommandService;
+
+    @Operation(summary = "특정 가게 리뷰 등록 API")
+    @PostMapping("/{storeId}/reviews/add")
+    public ApiResponse<ReviewResponseDTO.PostResultDto> postReview(
+            @RequestBody @Valid ReviewRequestDTO.PostDto request,
+            @PathVariable(name = "storeId") Long storeId,
+            @RequestParam(name = "memberId") Long memberId
+    ){
+        Store store = storeRepository.findById(storeId)
+                .orElseThrow(() -> new RuntimeException("Store not found"));
+
+        Review review = reviewCommandService.postReview(memberId, store, request);
+
+        return ApiResponse.onSuccess(ReviewConverter.toCreateReviewResultDTO(review));
+    }
 
     @Operation(summary = "특정 가게 미션 등록 API")
     @PostMapping("/{storeId}/missions/add")
