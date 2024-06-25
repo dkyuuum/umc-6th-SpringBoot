@@ -1,9 +1,13 @@
 package com.example.umc.web.controller;
 
 import com.example.umc.converter.MemberMissionConverter;
+import com.example.umc.converter.ReviewConverter;
+import com.example.umc.domain.Review;
 import com.example.umc.domain.mapping.MemberMission;
 import com.example.umc.service.MemberMissionService.MemberMissionCommandService;
+import com.example.umc.service.ReviewService.ReviewQueryService;
 import com.example.umc.web.dto.MemberMissionResponseDTO;
+import com.example.umc.web.dto.ReviewResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +30,7 @@ public class MemberRestController {
 
     private final MemberCommandService memberCommandService;
     private final MemberMissionCommandService memberMissionService;
+    private final ReviewQueryService reviewQueryService;
 
     @Operation(summary = "회원가입(간략화) API")
     @PostMapping("/")
@@ -54,5 +59,15 @@ public class MemberRestController {
         List<MemberMission> missionList = memberMissionService.getMissionList(memberId);
         List<MemberMissionResponseDTO.MemberMissionResultDto> memberMissionResultDto = MemberMissionConverter.toDTO(missionList);
         return ApiResponse.onSuccess(memberMissionResultDto);
+    }
+
+    @Operation(summary = "내가 작성한 리뷰 목록 조회 API")
+    @GetMapping("/{memberId}/reviews/list")
+    public ApiResponse<List<ReviewResponseDTO.PostResultDto>> getReviewList(
+            @PathVariable Long memberId
+    ){
+        List<Review> reviews = reviewQueryService.getReviewsByMemberId(memberId);
+        List<ReviewResponseDTO.PostResultDto> reviewResultDto = ReviewConverter.toDTO(reviews);
+        return ApiResponse.onSuccess(reviewResultDto);
     }
 }

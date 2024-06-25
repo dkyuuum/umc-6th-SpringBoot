@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @Transactional
@@ -26,6 +27,12 @@ public class ReviewConverter {
                 .title(review.getTitle())
                 .content(review.getContent())
                 .build();
+    }
+
+    public static List<ReviewResponseDTO.PostResultDto> toDTO(List<Review> reviews) {
+        return reviews.stream()
+                .map(ReviewConverter::toCreateReviewResultDTO)
+                .collect(Collectors.toList());
     }
 
 }
